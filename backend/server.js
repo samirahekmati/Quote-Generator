@@ -21,10 +21,12 @@ function pickRandomQuote() {
 }
 console.log(pickRandomQuote(quotes))
 
-app.get("/", (req, res) => {
+
+// API route to get a random quote (frontend will fetch this)
+app.get("/api/quotes", (req, res) => {
   console.error("Received a request for a quote");
   const quote = pickRandomQuote();
-  res.send(`"${quote.quote}" -${quote.author}`);
+  res.json(quote);
 });
 
 app.listen(port, () => {
