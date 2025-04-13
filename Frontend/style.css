@@ -1,0 +1,70 @@
+/* Reset & base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif;
+  }
+  
+  body {
+    background: linear-gradient(to right, #fdfbfb, #ebedee);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+  }
+  
+  /* Container holds everything centered */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    width: 100%;
+  }
+  
+  /* Quote box styling */
+  .quote-box {
+    background: #fff;
+    padding: 2rem 3rem;
+    border-radius: 16px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .quote {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: #444;
+  }
+  
+  .author {
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 2rem;
+  }
+  
+  /* Button styling */
+  #new-quote {
+    background: #5dbea3;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  #new-quote:hover {
+    background: #4ea48c;
+    transform: translateY(-2px);
+  }
+  
+  #new-quote:active {
+    transform: translateY(1px);
+  }
