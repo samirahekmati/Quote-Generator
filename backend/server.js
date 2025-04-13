@@ -1,8 +1,19 @@
 import express from "express";
 import quotes from "./quotes.json" assert { type: "json" };
+import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
 const port = 3000;
+
+// Required for __dirname with ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+console.log("file name-->", __filename);
+console.log("dir name-->", __dirname)
+
+// Serve static files from Frontend folder
+app.use(express.static(path.join(__dirname, "../Frontend")));
 
 function pickRandomQuote() {
   const index = Math.floor(Math.random() * quotes.length);
