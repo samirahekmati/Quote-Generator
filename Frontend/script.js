@@ -1,5 +1,5 @@
 function fetchAndDisplayQuote() {
-  fetch("/api/quotes")
+  fetch("https://cs4cc48o8wwskkwk8oss0884.hosting.codeyourfuture.io/api/quotes")
     .then((res) => res.json())
     .then((data) => {
       document.getElementById("quote").textContent = `"${data.quote}"`;

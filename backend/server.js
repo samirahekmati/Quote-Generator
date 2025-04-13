@@ -26,6 +26,9 @@ function pickRandomQuote() {
   return quotes[index];
 }
 
+app.get('/', (req, res) => {
+  res.send('Backend is running.');
+});
 
 // API route to get a random quote (frontend will fetch this)
 app.get("/api/quotes", (req, res) => {
