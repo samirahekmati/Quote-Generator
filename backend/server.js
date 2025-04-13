@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import quotes from "./quotes.json" assert { type: "json" };
 import path from "path";
 import { fileURLToPath } from "url";
@@ -12,6 +13,11 @@ const __dirname = path.dirname(__filename);
 console.log("file name-->", __filename);
 console.log("dir name-->", __dirname)
 
+// Allow requests from your frontend domain
+app.use(cors({
+  origin: "https://qw8ows84gokgoccccg00kcgg.hosting.codeyourfuture.io"
+}));
+
 // Serve static files from Frontend folder
 app.use(express.static(path.join(__dirname, "../Frontend")));
 
@@ -19,7 +25,6 @@ function pickRandomQuote() {
   const index = Math.floor(Math.random() * quotes.length);
   return quotes[index];
 }
-console.log(pickRandomQuote(quotes))
 
 
 // API route to get a random quote (frontend will fetch this)
