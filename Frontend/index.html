@@ -8,13 +8,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="quote-container">
         <div class="quote-box">
-          <p class="quote" id="quote">Loading...</p>
+          <p class="quote" id="quote">Press the New Quote button to generate a new inspirational quote.</p>
           <p class="author" id="author"></p>
           <button id="new-quote">New Quote</button>
         </div>
       </div>
+
+      <div class="form-container"> 
+        <form id="quote-form">
+          <h2>Add a New Quote</h2>
+
+          <div class="form">
+            <label for="quote">Quote:</label>
+            <textarea id="quote" name="quote" rows="10" cols="50" placeholder="Type your quote here..."></textarea>
+  
+            <label for="author">Author:</label>
+            <textarea id="author" name="author"  placeholder="Author's name..."></textarea>
+          </div>
+
+          <button type="submit" id="add-quote">Add Quote</button>
+          <p id="errMsg" style="color: red;"></p>
+          
+  
+        </form>
+
+      </div>
+      
+      
+      
     <script src="script.js"></script>
 </body>
 </html>
