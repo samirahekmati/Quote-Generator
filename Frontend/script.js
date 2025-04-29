@@ -15,11 +15,18 @@ const form = document.getElementById("quote-form")
 const quoteInput = document.getElementById("quoteForm");
 const authorInput = document.getElementById("authorForm");
 const validation = document.getElementById("validation")
+const newQuoteBtn = document.getElementById("new-quote");
+
+ // Attach listener for new quote button
+ newQuoteBtn.addEventListener("click", () => {
+  fetchAndDisplayQuote(); // Fetch a new quote on click
+});
 
 
-//adding event listener to the form
+//form submit handler
 form.addEventListener("submit", function(event){
   event.preventDefault(); // <-- IMPORTANT! Stop the form from reloading the page
+
 
   const addedQuote = quoteInput.value.trim()
   console.log("added quote-->", addedQuote)
@@ -62,13 +69,3 @@ form.addEventListener("submit", function(event){
 })
 
   })
-
-
-
-function setup() {
-  document.getElementById("new-quote").addEventListener("click", () => {
-    fetchAndDisplayQuote(); // Fetch new quote on button click
-  });
-}
-
-setup();
