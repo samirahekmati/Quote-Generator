@@ -20,10 +20,10 @@ const validation = document.getElementById("validation")
 form.addEventListener("submit", function(event){
   event.preventDefault(); // <-- IMPORTANT! Stop the form from reloading the page
 
-  const addedQuote = quoteInput.value
+  const addedQuote = quoteInput.value.trim()
   console.log("added quote-->", addedQuote)
 
-  const addedAuthor = authorInput.value
+  const addedAuthor = authorInput.value.trim()
   console.log("added author-->", addedAuthor)
 
   if(addedAuthor === "" || addedQuote === ""){

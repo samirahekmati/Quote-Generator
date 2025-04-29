@@ -4,6 +4,7 @@ import quotes from "./quotes.json" assert { type: "json" };
 import path from "path";
 import { fileURLToPath } from "url";
 
+
 const app = express();
 const port = 3000;
 
@@ -15,7 +16,17 @@ console.log("dir name-->", __dirname)
 
 // Allow requests from your frontend domain
 app.use(cors({
-  origin: "https://qw8ows84gokgoccccg00kcgg.hosting.codeyourfuture.io"
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      "https://qw8ows84gokgoccccg00kcgg.hosting.codeyourfuture.io",
+      "http://127.0.0.1:5500"
+    ];
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  }
 }));
 
 // Serve static files from Frontend folder
