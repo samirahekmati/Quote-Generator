@@ -8,6 +8,8 @@ import { fileURLToPath } from "url";
 const app = express();
 const port = 3000;
 
+app.use(express.json()); // parsing JSON bodies
+
 // Required for __dirname with ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -46,6 +48,20 @@ app.get("/api/quotes", (req, res) => {
   console.error("Received a request for a quote");
   const quote = pickRandomQuote();
   res.json(quote);
+});
+
+
+app.post("/api/quotes", (req, res) => {
+  const { quote, author } = req.body;
+
+  if (!quote || !author) {
+    return res.status(400).json({ error: "Quote and author are required." });
+  }
+
+  // Optional: Save the quote somewhere (e.g., to memory or to a file if learning file I/O)
+  console.log("New quote received:", quote, "by", author);
+
+  res.status(201).json({ message: "Quote saved successfully." });
 });
 
 app.listen(port, () => {
