@@ -63,7 +63,7 @@
     flex-direction: column;
   } 
   
-  textarea{
+  input, textarea{
     font-size: 20px;
     margin: 1rem;
     border: #777 solid 1px;
