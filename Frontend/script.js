@@ -8,8 +8,9 @@ function fetchAndDisplayQuote() {
 }
 
 
-  
-  //selecting html elements
+  document.addEventListener("DOMContentLoaded",()=>{
+
+      //selecting html elements
 const form = document.getElementById("quote-form")
 const quoteInput = document.getElementById("quoteForm");
 const authorInput = document.getElementById("authorForm");
@@ -57,10 +58,10 @@ form.addEventListener("submit", function(event){
       validation.style.color = "red";
       console.error(err);
     });
-
-  
   
 })
+
+  })
 
 
 
