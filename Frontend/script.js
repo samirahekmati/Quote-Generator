@@ -28,7 +28,8 @@ form.addEventListener("submit", function(event){
 
   if(addedAuthor === "" || addedQuote === ""){
     validation.textContent = "You should fill out the form before submition"
-  validation.style.color = "red"
+  validation.style.color = "red";
+  return; //stop the fetch if validation fails
   }
 
 
