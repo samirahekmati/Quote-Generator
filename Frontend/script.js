@@ -27,7 +27,8 @@ const newQuoteBtn = document.getElementById("new-quote");
 form.addEventListener("submit", function(event){
   event.preventDefault(); // <-- IMPORTANT! Stop the form from reloading the page
 
-
+  console.log("quoteInput:", quoteInput);
+  console.log("authorInput:", authorInput);
   const addedQuote = quoteInput.value.trim()
   console.log("added quote-->", addedQuote)
 
@@ -56,12 +57,12 @@ form.addEventListener("submit", function(event){
       return res.json();
     })
     .then((data) => {
-      validation.textContent = "Quote successfully saved!";
+      validation.textContent = data.message; // show message from backend
       validation.style.color = "green";
       form.reset();
     })
     .catch((err) => {
-      validation.textContent = "Error saving quote.";
+      validation.textContent = "Error saving quote." + err.message; //err msg from the backend
       validation.style.color = "red";
       console.error(err);
     });
