@@ -54,6 +54,9 @@ app.get("/api/quotes", (req, res) => {
 app.post("/api/quotes", (req, res) => {
   const { quote, author } = req.body;
 
+  console.log("Received POST request for /api/quotes");
+  console.log("Body received:", req.body);
+
   if (!quote || !author) {
     return res.status(400).json({ error: "Quote and author are required." });
   }
