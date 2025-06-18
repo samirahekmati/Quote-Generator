@@ -1,13 +1,15 @@
 function fetchAndDisplayQuote() {
+  //Send a GET request to /api/quotes endpoint
   fetch("https://cs4cc48o8wwskkwk8oss0884.hosting.codeyourfuture.io/api/quotes")
-    .then((res) => res.json())
-    .then((data) => {
+    .then((res) => res.json()) //Parses the JSON from the response
+    .then((data) => { //Update the HTML with the quote and author from the response
       document.getElementById("quote").textContent = `"${data.quote}"`;
       document.getElementById("author").textContent = `– ${data.author}`;
     });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+
+document.addEventListener("DOMContentLoaded", () => { //Runs the enclosed code after the HTML has fully loaded — so all DOM elements can safely be accessed
   //selecting html elements
   const form = document.getElementById("quote-form");
   const quoteInput = document.getElementById("quoteForm");
@@ -24,13 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", function (event) {
     event.preventDefault(); // <-- IMPORTANT! Stop the form from reloading the page
 
-    console.log("quoteInput:", quoteInput);
-    console.log("authorInput:", authorInput);
+    
     const addedQuote = quoteInput.value.trim();
-    console.log("added quote-->", addedQuote);
-
     const addedAuthor = authorInput.value.trim();
-    console.log("added author-->", addedAuthor);
+    
 
     if (addedAuthor === "" || addedQuote === "") {
       validation.textContent = "You should fill out the form before submition";
@@ -38,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return; //stop the fetch if validation fails
     }
 
+    //Send the user-provided quote and author to the backend in a POST request.
     fetch(
       "https://cs4cc48o8wwskkwk8oss0884.hosting.codeyourfuture.io/api/quotes",
       {
@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
           author: addedAuthor,
         }),
       }
-    )
-      .then((res) => {
+    ) 
+      .then((res) => { // Handling Response
         if (!res.ok) throw new Error("Failed to add quote");
         return res.json();
       })
